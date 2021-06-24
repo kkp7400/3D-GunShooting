@@ -2199,12 +2199,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85d6f03ac2a3bb3489b762b51c072845, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-<<<<<<< Updated upstream
   startingHealth: 100
-=======
-  startingHealth: 25
-  gameMgr: {fileID: 0}
->>>>>>> Stashed changes
   hitEffect: {fileID: 0}
   deathSound: {fileID: 0}
   hitSound: {fileID: 0}

@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class CameraControl : MonoBehaviour
 {
-    private List<Transform> target = new List<Transform>();
-    private List<GameObject> enemyList = new List<GameObject>();
+    private Transform target;
 
     public float smoothTime = 0.2f;
 
@@ -55,28 +54,13 @@ public class CameraControl : MonoBehaviour
 
     void Start()
     {
-		for (int i = 0; i < enemyList.Count; i++)
-		{
-            target[i] = enemyList[i].GetComponent<Enemy>().transform;
-        }
-        //target = GameObject.Find("Enemy").GetComponent<Transform>();
+        target = GameObject.Find("Player").GetComponent<Transform>();
     }
 
     //카메라가 추적 대상으로 이동
     private void Move()
     {
-		//for (int i = 0; i < enemyList.Count; i++)
-		//{
-		//	if ((!enemyList[i].GetComponent<Enemy>().isDead))
-		//	{
-            //targetPosition = target[i].position;
-        //  }
-		//	if (true)
-		//	{
-
-		//	}
-		//}
-        targetPosition = target[1].position;
+        targetPosition = target.transform.position;
 
         Vector3 smoothPosition = Vector3.SmoothDamp(transform.position, targetPosition,
                                             ref lastMovingVelocity, smoothTime);

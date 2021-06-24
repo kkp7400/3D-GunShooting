@@ -16,7 +16,7 @@ public class Enemy : LivingEntity
     private AudioSource enemyAudioPlayer; // 오디오 소스 컴포넌트
     private Renderer enemyRenderer; // 렌더러 컴포넌트    
     public GameObject player;
-    public bool isDead = false;
+
     public float damage = 20f; // 공격력
     public float timeBetAttack = 0.5f; // 공격 간격
     private float lastAttackTime; // 마지막 공격 시점
@@ -83,11 +83,6 @@ public class Enemy : LivingEntity
         // LivingEntity의 Die()를 실행하여 기본 사망 처리 실행
         base.Die();
         enemyAnimator.SetTrigger("Dead");
-<<<<<<< Updated upstream
-=======
-        isDead = true;
-        StartCoroutine(Return());
->>>>>>> Stashed changes
     }
 
     private void OnTriggerStay(Collider other)
