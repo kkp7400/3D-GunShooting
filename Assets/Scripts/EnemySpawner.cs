@@ -37,7 +37,7 @@ public class EnemySpawner : MonoBehaviour
     public ObjectPool objPool;
 
     public GameObject player;
-
+    private Enemy enemy;
     // Start is called before the first frame update
     void Start()
     {
@@ -102,7 +102,8 @@ public class EnemySpawner : MonoBehaviour
       
        for (int i = 0; i < enemyList.Count; i++)
        {
-           if (enemyList[i].activeSelf == true) return;
+           if (!enemyList[i].GetComponent<Enemy>().isDead) return;
+            
        }
         nowWave++;
        enemyList.Clear();
