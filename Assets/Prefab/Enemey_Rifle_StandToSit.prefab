@@ -2124,7 +2124,7 @@ GameObject:
   - component: {fileID: 1686683898}
   - component: {fileID: -2206311972287404483}
   m_Layer: 0
-  m_Name: Enemey_Rifle
+  m_Name: Enemey_Rifle_StandToSit
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2164,7 +2164,7 @@ Animator:
   m_GameObject: {fileID: 8637520711444233222}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 4837235d67e136e4b883adb2bafc73e8, type: 3}
-  m_Controller: {fileID: 9100000, guid: dbedaae1d71df314f9fd060344169be6, type: 2}
+  m_Controller: {fileID: 9100000, guid: d2be3f483321ef94da290702313bd09b, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
@@ -2201,13 +2201,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85d6f03ac2a3bb3489b762b51c072845, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingHealth: 100
+  startingHealth: 10
   gameMgr: {fileID: 0}
   hitEffect: {fileID: 0}
   deathSound: {fileID: 0}
   hitSound: {fileID: 0}
   dissolve: {fileID: 0}
   player: {fileID: 0}
+  isDead: 0
   damage: 20
   timeBetAttack: 0.5
   objPool: {fileID: 0}

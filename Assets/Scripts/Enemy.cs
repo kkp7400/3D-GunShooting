@@ -16,7 +16,8 @@ public class Enemy : LivingEntity
     private AudioSource enemyAudioPlayer; // 오디오 소스 컴포넌트
     private Renderer enemyRenderer; // 렌더러 컴포넌트    
     public GameObject player;
-
+    public string myTag;
+    public bool isDead = false;
     public float damage = 20f; // 공격력
     public float timeBetAttack = 0.5f; // 공격 간격
     private float lastAttackTime; // 마지막 공격 시점
@@ -24,6 +25,7 @@ public class Enemy : LivingEntity
     private void Awake()
     {
         // 초기화
+        isDead = false;
         enemyAnimator = GetComponent<Animator>();
         base.health = 2;
         gameMgr = GameObject.FindGameObjectWithTag("GameController");
@@ -40,7 +42,8 @@ public class Enemy : LivingEntity
     private void Start()
     {
         // 게임 오브젝트 활성화와 동시에 AI의 추적 루틴 시작
-        // StartCoroutine(UpdatePath());
+        // StartCoroutine(UpdatePath());        
+        myTag = this.gameObject.name;
     }
 
     private void Update()
@@ -85,6 +88,7 @@ public class Enemy : LivingEntity
         // LivingEntity의 Die()를 실행하여 기본 사망 처리 실행
         base.Die();
         enemyAnimator.SetTrigger("Dead");
+        isDead = true;
         StartCoroutine(Return());
     }
 
@@ -102,6 +106,9 @@ public class Enemy : LivingEntity
 	{
         dissolve.isDissolve = true;
         yield return new WaitForSeconds(10f);
-        objPool.ReturnToPool("Rifle", this.gameObject);
+        
+        myTag.Remove(myTag.Length - 7, 7);
+        string test = myTag;
+        objPool.ReturnToPool(myTag, this.gameObject);
     }
 }

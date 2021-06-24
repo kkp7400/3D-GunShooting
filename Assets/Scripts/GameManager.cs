@@ -39,7 +39,8 @@ public class GameManager : MonoBehaviour
     {
         MoveSpeed = 4f;
         MovedValue = 0f;
-    }
+        nowStage = 0;
+}
 
     // Update is called once per frame
     void Update()

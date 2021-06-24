@@ -29,7 +29,7 @@ public class EnemySpawner : MonoBehaviour
     public List<bool> stageStart = new List<bool>();
 
     Vector3 lastCubePos;
-    
+    private int newStageArry;
     public bool isHole = true;
 
     float levelTime;
@@ -41,8 +41,8 @@ public class EnemySpawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        nowWave = -1;
-        lastWave = nowWave;
+        nowWave = 0;
+        lastWave = -1;
         for (int i = 0; i < stage.Length; i++)
         {
             stageStart.Add(false);
@@ -51,6 +51,7 @@ public class EnemySpawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        newStageArry = GameManager.instance.nowStage;
         switch (GameManager.instance.nowStage)
         {
             case 1:
@@ -70,25 +71,23 @@ public class EnemySpawner : MonoBehaviour
         }
         if (nowWave > lastWave)
         {
-            stage[nowWave].waveStart = true;
+            stage[newStageArry].wave[nowWave].enemySpawn = true;
         }
-        for (int i = 0; i < stage.Length; i++)
-        {
-            if (stage[i].waveStart)
+           // if (stage[newStageArry].waveStart)
             {
-                for (int j = 0; j < stage[i].wave.Length; j++)
+             //   for (int j = 0; j < stage[newStageArry].wave.Length; j++)
                 {
-                    // if (stage[i].wave[j].enemySpawn == true)
+                    if (stage[newStageArry].wave[nowWave].enemySpawn == true)
                     {
 
-                        enemyList.Add(objPool.SpawnFromPool(stage[i].wave[j].enemyType, new Vector3(stage[i].wave[j].enemyPos.position.x, stage[i].wave[j].enemyPos.position.y, stage[i].wave[j].enemyPos.position.z),
+                        enemyList.Add(objPool.SpawnFromPool(stage[newStageArry].wave[nowWave].enemyType, new Vector3(stage[newStageArry].wave[nowWave].enemyPos.position.x, stage[newStageArry].wave[nowWave].enemyPos.position.y, stage[newStageArry].wave[nowWave].enemyPos.position.z),
                        Quaternion.identity));
-                        stage[i].wave[j].enemySpawn = false;
+                        stage[newStageArry].wave[nowWave].enemySpawn = false;
                     }
 
                 }
-                stage[i].waveStart = false;
-            }
+                //stage[i].waveStart = false;
+            
         }
         
 
@@ -102,8 +101,9 @@ public class EnemySpawner : MonoBehaviour
       
        for (int i = 0; i < enemyList.Count; i++)
        {
-           if (enemyList[i].activeSelf == true) return;
+           if (enemyList[i].GetComponent<Enemy>().isDead == false) return;
        }
+       if(nowWave< stage[newStageArry].wave.Length)
         nowWave++;
        enemyList.Clear();
       
