@@ -7,11 +7,11 @@ public class Enemy : LivingEntity
 {
     //private LivingEntity targetEntity; // 추적할 대상
     private NavMeshAgent pathFinder; // 경로계산 AI 에이전트
-
+    public GameObject gameMgr;
     public ParticleSystem hitEffect; // 피격시 재생할 파티클 효과
     public AudioClip deathSound; // 사망시 재생할 소리
     public AudioClip hitSound; // 피격시 재생할 소리
-
+    public AutoDissolve dissolve;
     private Animator enemyAnimator; // 애니메이터 컴포넌트
     private AudioSource enemyAudioPlayer; // 오디오 소스 컴포넌트
     private Renderer enemyRenderer; // 렌더러 컴포넌트    
@@ -26,8 +26,10 @@ public class Enemy : LivingEntity
         // 초기화
         enemyAnimator = GetComponent<Animator>();
         base.health = 2;
-
+        gameMgr = GameObject.FindGameObjectWithTag("GameController");
         player = GameObject.FindGameObjectWithTag("Player");
+        objPool = gameMgr.GetComponent<ObjectPool>();
+        dissolve = GetComponent<AutoDissolve>();
     }
 
     // 적 AI의 초기 스펙을 결정하는 셋업 메서드
@@ -74,7 +76,7 @@ public class Enemy : LivingEntity
     {
         // LivingEntity의 OnDamage()를 실행하여 데미지 적용
         base.OnDamage(damage, hitPoint, hitNormal);
-        objPool.ReturnToPool("Rifle", this.gameObject);
+        
     }
 
     //사망 처리
@@ -83,6 +85,7 @@ public class Enemy : LivingEntity
         // LivingEntity의 Die()를 실행하여 기본 사망 처리 실행
         base.Die();
         enemyAnimator.SetTrigger("Dead");
+        StartCoroutine(Return());
     }
 
     private void OnTriggerStay(Collider other)
@@ -95,5 +98,10 @@ public class Enemy : LivingEntity
     {
         Debug.Log("쏨");
     }
-
+    IEnumerator Return()
+	{
+        dissolve.isDissolve = true;
+        yield return new WaitForSeconds(10f);
+        objPool.ReturnToPool("Rifle", this.gameObject);
+    }
 }

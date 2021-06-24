@@ -2121,9 +2121,11 @@ GameObject:
   - component: {fileID: 8542003138186159478}
   - component: {fileID: 8636483080043190652}
   - component: {fileID: 1214723302565923}
+  - component: {fileID: 1686683898}
+  - component: {fileID: -2206311972287404483}
   m_Layer: 0
   m_Name: Enemey_Rifle
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2200,13 +2202,42 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startingHealth: 100
+  gameMgr: {fileID: 0}
   hitEffect: {fileID: 0}
   deathSound: {fileID: 0}
   hitSound: {fileID: 0}
+  dissolve: {fileID: 0}
   player: {fileID: 0}
   damage: 20
   timeBetAttack: 0.5
   objPool: {fileID: 0}
+--- !u!136 &1686683898
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8637520711444233222}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 1, z: 0}
+--- !u!114 &-2206311972287404483
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8637520711444233222}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7551d65cd83e01b428c5164903d42b32, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isDissolve: 0
 --- !u!1 &8637535517622006298
 GameObject:
   m_ObjectHideFlags: 0

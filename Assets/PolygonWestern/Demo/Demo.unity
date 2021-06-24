@@ -81247,7 +81247,7 @@ GameObject:
   - component: {fileID: 1807948379}
   m_Layer: 0
   m_Name: GameManager
-  m_TagString: Untagged
+  m_TagString: GameController
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -81281,7 +81281,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1807948379
 MonoBehaviour:
@@ -95052,7 +95052,7 @@ PrefabInstance:
     - target: {fileID: 1779905274160036581, guid: 90be07defeaee084f8f038d362d82dcf,
         type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1779905274160036581, guid: 90be07defeaee084f8f038d362d82dcf,
         type: 3}
@@ -95114,9 +95114,9 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1214723302565923, guid: a8700727b8ea3324c94432b95e69293f, type: 3}
-      propertyPath: player
+      propertyPath: objPool
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1807948377}
     - target: {fileID: 8459339463833906207, guid: a8700727b8ea3324c94432b95e69293f,
         type: 3}
       propertyPath: LightsModule.light
