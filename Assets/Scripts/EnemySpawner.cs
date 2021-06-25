@@ -84,10 +84,9 @@ public class EnemySpawner : MonoBehaviour
                        Quaternion.identity));
                         stage[newStageArry].wave[nowWave].enemySpawn = false;
                     }
-
                 }
                 //stage[i].waveStart = false;
-            
+
         }
         
 
@@ -106,7 +105,6 @@ public class EnemySpawner : MonoBehaviour
        if(nowWave< stage[newStageArry].wave.Length)
         nowWave++;
        enemyList.Clear();
-      
     }
     void PhaseFloor()
     {
