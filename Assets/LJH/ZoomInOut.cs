@@ -7,6 +7,7 @@ public class ZoomInOut : MonoBehaviour
     [SerializeField]
     private List<Transform> target = new List<Transform>();
     EnemySpawner es;
+    public GameObject crossHair;
     //public List<GameObject> enemyList = new List<GameObject>();
     public float zoom;
     private Transform tr;
@@ -29,7 +30,8 @@ public class ZoomInOut : MonoBehaviour
             target[i].position = es.enemyList[i].GetComponent<Enemy>().transform.position;
         }
         int scase = 0;
-        if (es.enemyList[scase].GetComponent<Enemy>().isDead == false) CameraZoomIn(num);
+        if (es.enemyList[scase].GetComponent<Enemy>().isDead == false)  CameraZoomIn(num);
+           
         if (es.enemyList[scase].GetComponent<Enemy>().isDead == true) CameraZoomOut(num);
     }
     void CameraZoomIn(int num)
@@ -45,8 +47,12 @@ public class ZoomInOut : MonoBehaviour
         {
             tr.position -= distance;
         }
+        Vector3 pos;
+        pos.x = TargetDist.x;
+        pos.y = TargetDist.y;
+        pos.z = 1;
        
-            
+        crossHair.transform.position = Camera.main.ScreenToWorldPoint(pos);
 
         //if (es.enemyList[num].GetComponent<Enemy>().isDead == false)
         //{  
