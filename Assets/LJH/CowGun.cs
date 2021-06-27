@@ -72,7 +72,7 @@ public class CowGun : MonoBehaviour
 
 		Vector3 dir = Camera.main.ScreenToWorldPoint(mos);
 
-		if (Physics.Raycast(fireTransform.position, dir, out hit, fireDistance))
+		if (Physics.Raycast(Camera.main.transform.position, dir, out hit, fireDistance)) ///fireTransform.position
 		{
 			IDamageable target = hit.collider.GetComponent<IDamageable>();
 			if (target != null)

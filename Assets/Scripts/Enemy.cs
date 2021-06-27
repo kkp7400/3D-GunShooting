@@ -22,6 +22,9 @@ public class Enemy : LivingEntity
     public float timeBetAttack = 0.5f; // 공격 간격
     private float lastAttackTime; // 마지막 공격 시점
     public ObjectPool objPool;
+    public ParticleSystem HitFx;
+    public GameObject fx;
+    public GameObject[] skin = new GameObject[5];
     private void Awake()
     {
         // 초기화
@@ -32,7 +35,20 @@ public class Enemy : LivingEntity
         player = GameObject.FindGameObjectWithTag("Player");
         objPool = gameMgr.GetComponent<ObjectPool>();
         dissolve = GetComponent<AutoDissolve>();
+        fx = transform.FindChild("HitFx").gameObject;
+        HitFx = fx.GetComponent<ParticleSystem>();
+
+        skin[1] = transform.FindChild("Character_Badguy_01").gameObject;
+        skin[2] = transform.FindChild("Character_Business_Man_01").gameObject;
+        skin[3] = transform.FindChild("Character_Cowboy_01").gameObject;
+        skin[4] = transform.FindChild("Character_Gunman_01").gameObject;
+        skin[0] = transform.FindChild("Character_Sheriff_01").gameObject;
+
+       
+
+
     }
+
 
     // 적 AI의 초기 스펙을 결정하는 셋업 메서드
     public void Setup(float newHealth, float newDamage, float newSpeed, Color skinColor)
@@ -41,6 +57,8 @@ public class Enemy : LivingEntity
 
     private void Start()
     {
+        int skimNum  = Random.Range(0, 5);
+        skin[skimNum].SetActive(true);
         // 게임 오브젝트 활성화와 동시에 AI의 추적 루틴 시작
         // StartCoroutine(UpdatePath());        
         myTag = this.gameObject.name;
@@ -87,6 +105,7 @@ public class Enemy : LivingEntity
     {
         // LivingEntity의 Die()를 실행하여 기본 사망 처리 실행
         base.Die();
+        HitFx.Play();
         enemyAnimator.SetTrigger("Dead");
         isDead = true;
         StartCoroutine(Return());
@@ -105,7 +124,7 @@ public class Enemy : LivingEntity
     IEnumerator Return()
 	{
         dissolve.isDissolve = true;
-        yield return new WaitForSeconds(10f);
+        yield return new WaitForSeconds(5f);
         
         myTag.Remove(myTag.Length - 7, 7);
         string test = myTag;

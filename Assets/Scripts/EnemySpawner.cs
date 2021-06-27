@@ -11,7 +11,7 @@ public class EnemySpawner : MonoBehaviour
     [Serializable]
     public class Wave
     {
-        public bool enemySpawn = true;        
+        public bool enemySpawn = true;
         public Transform enemyPos;
         public String enemyType = "Rifle";
     }
@@ -37,7 +37,7 @@ public class EnemySpawner : MonoBehaviour
     public ObjectPool objPool;
 
     public GameObject player;
-
+    public HostageSpawner hostageSpawner;
     // Start is called before the first frame update
     void Start()
     {
@@ -72,24 +72,24 @@ public class EnemySpawner : MonoBehaviour
         if (nowWave > lastWave)
         {
             stage[newStageArry].wave[nowWave].enemySpawn = true;
+            hostageSpawner.LinkEnemy(newStageArry, nowWave);
+
         }
-           // if (stage[newStageArry].waveStart)
+        // if (stage[newStageArry].waveStart)
+        {
+            //   for (int j = 0; j < stage[newStageArry].wave.Length; j++)
             {
-             //   for (int j = 0; j < stage[newStageArry].wave.Length; j++)
+                if (stage[newStageArry].wave[nowWave].enemySpawn == true)
                 {
-                    if (stage[newStageArry].wave[nowWave].enemySpawn == true)
-                    {
-
-                        enemyList.Add(objPool.SpawnFromPool(stage[newStageArry].wave[nowWave].enemyType, new Vector3(stage[newStageArry].wave[nowWave].enemyPos.position.x, stage[newStageArry].wave[nowWave].enemyPos.position.y, stage[newStageArry].wave[nowWave].enemyPos.position.z),
+                    enemyList.Add(objPool.SpawnFromPool(stage[newStageArry].wave[nowWave].enemyType, new Vector3(stage[newStageArry].wave[nowWave].enemyPos.position.x, stage[newStageArry].wave[nowWave].enemyPos.position.y, stage[newStageArry].wave[nowWave].enemyPos.position.z),
                        Quaternion.identity));
-                        stage[newStageArry].wave[nowWave].enemySpawn = false;
-                    }
-
+                    stage[newStageArry].wave[nowWave].enemySpawn = false;
                 }
-                //stage[i].waveStart = false;
-            
+            }
+            //stage[i].waveStart = false;
+
         }
-        
+
 
         lastWave = nowWave;
 
@@ -98,15 +98,14 @@ public class EnemySpawner : MonoBehaviour
 
     void NextStage()
     {
-      
-       for (int i = 0; i < enemyList.Count; i++)
-       {
-           if (enemyList[i].GetComponent<Enemy>().isDead == false) return;
-       }
-       if(nowWave< stage[newStageArry].wave.Length)
-        nowWave++;
-       enemyList.Clear();
-      
+
+        for (int i = 0; i < enemyList.Count; i++)
+        {
+            if (enemyList[i].GetComponent<Enemy>().isDead == false) return;
+        }
+        if (nowWave < stage[newStageArry].wave.Length)
+            nowWave++;
+        enemyList.Clear();
     }
     void PhaseFloor()
     {
