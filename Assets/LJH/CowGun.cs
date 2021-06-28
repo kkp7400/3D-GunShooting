@@ -39,7 +39,7 @@ public class CowGun : MonoBehaviour
 	private void Awake()
 	{
 		// 사용할 컴포넌트들의 참조를 가져오기
-		gunAudioPlayer = GetComponent<AudioSource>();
+		gunAudioPlayer = FindObjectOfType<AudioSource>();
 		bulletLineRenderer = GetComponent<LineRenderer>();
 
 		bulletLineRenderer.positionCount = 2;
@@ -100,7 +100,7 @@ public class CowGun : MonoBehaviour
 	{
 		muzzleFlashEffect.Play();
 		shellEjectEffect.Play();
-		// gunAudioPlayer.PlayOneShot(shotClip);
+		gunAudioPlayer.PlayOneShot(shotClip);
 		bulletLineRenderer.SetPosition(0, fireTransform.position);
 		bulletLineRenderer.SetPosition(1, hitPosition);
 		// 라인 렌더러를 활성화하여 총알 궤적을 그린다
@@ -128,7 +128,7 @@ public class CowGun : MonoBehaviour
 		// 현재 상태를 재장전 중 상태로 전환
 		state = State.Reloading;
 
-		//gunAudioPlayer.PlayOneShot(reloadClip);
+		gunAudioPlayer.PlayOneShot(reloadClip);
 
 		// 재장전 소요 시간 만큼 처리를 쉬기
 		yield return new WaitForSeconds(reloadTime);

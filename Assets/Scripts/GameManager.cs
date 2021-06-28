@@ -9,19 +9,22 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
 
+    public Text timer;
     public PlayerHp playerHp;
     public int nowStage = 0;
     public int nowWave = 0;
 
     public bool gameEnd;
 
-
-
-
     public float MoveSpeed { get; set; }
     public float MovedValue { get; set; }
 
+    public bool timerOn = true;
+    public float totalTime = 0f;
 
+    public int minute = 0;
+    public int second = 0;
+    public int tic = 0;
 
     private void Awake()
     {
@@ -61,5 +64,21 @@ public class GameManager : MonoBehaviour
         {
             SceneManager.LoadScene("Ending");
         }
+        if (timerOn)
+        {
+            totalTime += Time.deltaTime;
+        }
+        timer.GetComponent<Text>().text = "Time : " + TimerCalc();
+    }
+
+    private string TimerCalc()
+    {
+        tic = (int)((totalTime % 1) * 100);
+
+        second = (int)totalTime % 60;
+
+        minute = (int)totalTime / 60;
+
+        return minute + " : " + second + " : " + tic;
     }
 }

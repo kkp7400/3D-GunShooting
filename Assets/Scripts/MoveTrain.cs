@@ -19,6 +19,8 @@ public class MoveTrain : MonoBehaviour
     public GameObject e;
     public GameObject r;
     public GameObject t;
+    public GameObject score;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -71,8 +73,6 @@ public class MoveTrain : MonoBehaviour
 
         }
                 
-
-
     }
     public IEnumerator FadeInCoroutine()
     {
@@ -108,6 +108,8 @@ public class MoveTrain : MonoBehaviour
             fadeCount += 0.01f;
             yield return new WaitForSeconds(0.01f);
             t.GetComponent<Text>().color = new Color(255, 255, 255, fadeCount);
+            score.
+            score.GetComponent<Text>().color = new Color(255, 255, 255, fadeCount);
         }
         yield return new WaitForSeconds(3f);
         SceneManager.LoadScene("Intro");
