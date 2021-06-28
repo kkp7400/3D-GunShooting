@@ -36,7 +36,7 @@ public class ZoomInOut : MonoBehaviour
             {
                 CameraZoomOut();
                 num += 1;
-                if (num == 9 || num == 18 || num == 27) isFight = false;
+                if (num == 10 || num == 20 || num == 30) isFight = false;
             }
             else if (es.enemyList[0].GetComponent<Enemy>().isDead == false) CameraZoomIn();
         }
