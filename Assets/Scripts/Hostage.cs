@@ -37,7 +37,8 @@ public class Hostage : LivingEntity
         objPool = gameMgr.GetComponent<ObjectPool>();
         fx = transform.FindChild("HitFx").gameObject;
         HitFx = fx.GetComponent<ParticleSystem>();
-
+        //HitFx.Pause();
+        fx.SetActive(false);
         skin[1] = transform.FindChild("Character_Woman_01").gameObject;
         skin[0] = transform.FindChild("Character_Cowgirl_01").gameObject;
         skin[2] = transform.FindChild("Character_WorkingGirl_01").gameObject;
@@ -98,7 +99,8 @@ public class Hostage : LivingEntity
     {
         // LivingEntity의 OnDamage()를 실행하여 데미지 적용
         base.OnDamage(damage, hitPoint, hitNormal);
-
+        //fx.SetActive(true);
+        //this.gameObject.GetComponent<Collider>().enabled = false;
     }
 
     //사망 처리
@@ -106,9 +108,12 @@ public class Hostage : LivingEntity
     {
         // LivingEntity의 Die()를 실행하여 기본 사망 처리 실행
         base.Die();
-        HitFx.Play();
+        //HitFx.Play();
         enemyAnimator.SetTrigger("Dead");
         isDead = true;
+        fx.SetActive(true);
+        //HitFx.Play();
+        this.gameObject.GetComponent<Collider>().enabled = false;
         StartCoroutine(Return());
     }
 
@@ -124,7 +129,7 @@ public class Hostage : LivingEntity
     IEnumerator Return()
     {
        
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(10f);
        //dissolve[0].isDissolve = true;
        //dissolve[1].isDissolve = true;
        //dissolve[2].isDissolve = true;

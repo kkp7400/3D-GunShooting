@@ -6,75 +6,69 @@ public class ZoomInOut : MonoBehaviour
 {
     [SerializeField]
     private List<Transform> target = new List<Transform>();
+    public Transform headPosition;
     EnemySpawner es;
     public GameObject crossHair;
-    //public List<GameObject> enemyList = new List<GameObject>();
+    public Vector3 posit;
+    public Vector3 rot;
     public float zoom;
     private Transform tr;
     private int num;
-    
-    // Start is called before the first frame update
-    void Awake()
+    private bool isFight = true;
+
+    void Start()
     {
+        num = 0;
         tr = GetComponent<Transform>();
         es = FindObjectOfType<EnemySpawner>();
-        num = 0;
-
+        //num = 0;
     }
 
-    // Update is called once per frame
     void Update()
     {
         for (int i = 0; i < es.enemyList.Count; i++)
         {
             target[i].position = es.enemyList[i].GetComponent<Enemy>().transform.position;
         }
-        int scase = 0;
-        if (es.enemyList[scase].GetComponent<Enemy>().isDead == false)  CameraZoomIn(num);
-           
-        if (es.enemyList[scase].GetComponent<Enemy>().isDead == true) CameraZoomOut(num);
-    }
-    void CameraZoomIn(int num)
-    {
-        Vector3 TargetDist = tr.position - (target[num].position + new Vector3(0, 1.5f, 0));
-        TargetDist = Vector3.Normalize(TargetDist);
-        Vector3 TargetMax = tr.position - (target[num].position + new Vector3(3, 1.5f, 3));
-        TargetMax = Vector3.Normalize(TargetMax);
-        Quaternion q = Quaternion.LookRotation(target[num].position + new Vector3(0, 1.5f, 0));
-        transform.LookAt(target[num].position + new Vector3(0, 1.5f, 0));
-        Vector3 distance = (TargetDist * 1f * zoom);
-        if (distance.x <= TargetMax.x && distance.z <= TargetMax.z )
+        if (isFight)
         {
-            tr.position -= distance;
+            if (es.enemyList[0].GetComponent<Enemy>().isDead == true)
+            {
+                CameraZoomOut();
+                num += 1;
+                if (num == 9 || num == 18 || num == 27) isFight = false;
+            }
+            else if (es.enemyList[0].GetComponent<Enemy>().isDead == false) CameraZoomIn();
         }
-        Vector3 pos;
-        pos.x = TargetDist.x;
-        pos.y = TargetDist.y;
-        pos.z = 1;
-       
-        crossHair.transform.position = Camera.main.ScreenToWorldPoint(pos);
-
-        //if (es.enemyList[num].GetComponent<Enemy>().isDead == false)
-        //{  
-        //}
-
-        //else if (es.enemyList[num].GetComponent<Enemy>().isDead == true)
-        //{
-        //    Vector3 TargetDist = tr.position - (target[num].position + new Vector3(0, +1.5f, 0));
-        //    TargetDist = Vector3.Normalize(TargetDist);
-        //    Quaternion q = Quaternion.LookRotation(target[num].position + new Vector3(0, +1.5f, 0));
-        //    transform.LookAt(target[num].position + new Vector3(0 + 1.5f, 0));
-        //    tr.position -= (TargetDist * -1 * zoom);
-        //    num++;
-        //}
+        else
+        {
+            tr.position = headPosition.position - posit;
+            tr.rotation = /*headPosition.rotation + */Quaternion.LookRotation(rot);
+        }
     }
-    void CameraZoomOut(int num)
+    void CameraZoomIn()
     {
-        Vector3 TargetDist = tr.position - (target[num].position + new Vector3(0, 1.5f, 0));
-        TargetDist = Vector3.Normalize(TargetDist);
-        Quaternion q = Quaternion.LookRotation(target[num].position + new Vector3(0, 1.5f, 0));
-        transform.LookAt(target[num].position + new Vector3(0, 1.5f, 0));
-        tr.position -= (TargetDist * -1 * zoom);
-        num++;
+        Vector3 targetDist = tr.position - (target[0].position + new Vector3(0, 1.5f, 0));
+        targetDist = Vector3.Normalize(targetDist);
+        Vector3 TargetMax = tr.position - (target[0].position + new Vector3(3, 1.5f, 3));
+        TargetMax = Vector3.Normalize(TargetMax);
+        Quaternion.LookRotation(target[0].position + new Vector3(0, 1.5f, 0));
+        transform.LookAt(target[0].position + new Vector3(0, 1.5f, 0));
+        Vector3 distance = (targetDist * 1f * zoom);
+
+        if (distance.x <= TargetMax.x && distance.z <= TargetMax.z) tr.position -= distance;
+
+        //Vector3 pos;
+        //pos.x = targetDist.x;
+        //pos.y = targetDist.y;
+        //pos.z = 1;
+    }
+    void CameraZoomOut()
+    {
+        Vector3 targetDist = tr.position - (target[0].position + new Vector3(0, 1.5f, 0));
+        targetDist = Vector3.Normalize(targetDist);
+        Quaternion.LookRotation(target[0].position + new Vector3(0, 1.5f, 0));
+        transform.LookAt(target[0].position + new Vector3(0, 1.5f, 0));
+        tr.position -= (targetDist * -1.0f * zoom);
     }
 }

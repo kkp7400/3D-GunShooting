@@ -108,6 +108,7 @@ public class Enemy : LivingEntity
         HitFx.Play();
         enemyAnimator.SetTrigger("Dead");
         isDead = true;
+        this.gameObject.GetComponent<Collider>().enabled = false;
         StartCoroutine(Return());
     }
 
