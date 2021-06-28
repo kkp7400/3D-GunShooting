@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Rendering.PostProcessing;
+using UnityEngine.SceneManagement;
 public class HighAim : MonoBehaviour
 {
+    public Image image;
     public GameObject shot;
     Vector3[] a = new Vector3[10];
     public EnemySpawner enemySpawner;
@@ -20,6 +22,7 @@ public class HighAim : MonoBehaviour
     private ChromaticAberration chromatic;
     public bool[] aimStart = new bool[10];
     private bool startCo;
+
     void Start()
     {
         startCo = true;
@@ -154,6 +157,14 @@ public class HighAim : MonoBehaviour
         aimStart[9] = false;
         yield return new WaitForSeconds(1.5f);
         enemySpawner.HighNoon();
-       // StopCoroutine(Shot());
+        yield return new WaitForSeconds(2.0f);
+        float fadeCount = 0;
+        while (fadeCount < 1.0f)
+        {
+            fadeCount += 0.02f;
+            yield return new WaitForSeconds(0.01f);
+            image.color = new Color(0, 0, 0, fadeCount);
+        }
+        SceneManager.LoadScene("Clear");
     }
 }

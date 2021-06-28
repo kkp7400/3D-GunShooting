@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/PolygonWestern/Demo/Ending.unity
     guid: b38728e0f3800f747add5785f0bc2b7b
+  - enabled: 1
+    path: Assets/PolygonWestern/Demo/Clear.unity
+    guid: 746addeaa536ad04c94c398190618ab9
   m_configObjects: {}
