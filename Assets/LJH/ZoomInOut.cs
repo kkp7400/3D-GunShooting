@@ -40,7 +40,8 @@ public class ZoomInOut : MonoBehaviour
             {
                 CameraZoomOut();
                 num += 1;
-                if (num == 10 || num == 20 || num == 30 || num >= 40 && trig.start == false)
+                
+                if (num == 10 || num == 20 || num == 30 || num == 40)
                 {
                     isFight = false;
                     playerDestination.destNum += 1;
@@ -49,7 +50,7 @@ public class ZoomInOut : MonoBehaviour
             }
             else if (es.enemyList[0].GetComponent<Enemy>().isDead == false) CameraZoomIn();
         }
-        else
+        else if(!isFight)
         {
             tr.position = headPosition.position - posit;
             tr.rotation = /*headPosition.rotation + */Quaternion.LookRotation(rot);
@@ -58,8 +59,7 @@ public class ZoomInOut : MonoBehaviour
                 isFight = true;
                 playerDestination.isMove = false;
             }
-        }
-        
+        }    
     }
     void CameraZoomIn()
     {

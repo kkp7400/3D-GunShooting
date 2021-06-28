@@ -32,5 +32,12 @@ public class PlayerDestination : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
+        if(other.tag == "Stage4")
+        {
+            other.gameObject.SetActive(false);
+            isMove = false;
+            this.gameObject.transform.rotation = Quaternion.identity;
+            nav.enabled = false;
+        }
     }
 }

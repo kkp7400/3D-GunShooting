@@ -4,5 +4,14 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/PolygonWestern/Demo/Intro.unity
+    guid: 958041e97714a5043b5fcd07f4cc2952
+  - enabled: 1
+    path: Assets/PolygonWestern/Demo/Demo.unity
+    guid: b02577a54950ef949a2fcd9d37a1d40c
+  - enabled: 1
+    path: Assets/PolygonWestern/Demo/Ending.unity
+    guid: 2f92396606d18974986cbc77cc2b2e36
   m_configObjects: {}

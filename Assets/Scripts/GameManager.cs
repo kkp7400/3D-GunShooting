@@ -8,7 +8,7 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
-
+    public PlayerHp playerHp;
     public int nowStage = 0;
     public int nowWave = 0;
 
@@ -50,6 +50,10 @@ public class GameManager : MonoBehaviour
         {
             if (Input.GetMouseButtonDown(0))
                 SceneManager.LoadScene(0);
+        }
+        if (playerHp.isDead)
+        {
+            SceneManager.LoadScene("Ending");
         }
     }
 }

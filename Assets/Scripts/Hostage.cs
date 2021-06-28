@@ -23,6 +23,7 @@ public class Hostage : LivingEntity
     public float timeBetAttack = 0.5f; // 공격 간격
     private float lastAttackTime; // 마지막 공격 시점
     public ObjectPool objPool;
+    private PlayerHp playerHp;
     public ParticleSystem HitFx;
     public GameObject fx;
     public GameObject[] skin = new GameObject[3];
@@ -34,6 +35,7 @@ public class Hostage : LivingEntity
         base.health = 2;
         gameMgr = GameObject.FindGameObjectWithTag("GameController");
         player = GameObject.FindGameObjectWithTag("Player");
+        playerHp = FindObjectOfType<PlayerHp>();
         objPool = gameMgr.GetComponent<ObjectPool>();
         fx = transform.FindChild("HitFx").gameObject;
         HitFx = fx.GetComponent<ParticleSystem>();
@@ -111,6 +113,7 @@ public class Hostage : LivingEntity
         //HitFx.Play();
         enemyAnimator.SetTrigger("Dead");
         isDead = true;
+        playerHp.hp--;
         fx.SetActive(true);
         //HitFx.Play();
         this.gameObject.GetComponent<Collider>().enabled = false;
