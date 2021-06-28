@@ -25,7 +25,6 @@ public class ZoomInOut : MonoBehaviour
         tr = GetComponent<Transform>();
         es = FindObjectOfType<EnemySpawner>();
         trig = FindObjectOfType<Playertrig>();
-        //num = 0;
     }
 
     void Update()
@@ -69,9 +68,9 @@ public class ZoomInOut : MonoBehaviour
         TargetMax = Vector3.Normalize(TargetMax);
         Quaternion.LookRotation(target[0].position + new Vector3(0, 1.5f, 0));
         transform.LookAt(target[0].position + new Vector3(0, 1.5f, 0));
-        Vector3 distance = (targetDist * 1f * zoom);
+        Vector3 distance = (targetDist * 1f * zoom ) * Time.deltaTime;
 
-        if (distance.x <= TargetMax.x && distance.z <= TargetMax.z) tr.position -= distance;
+        if (distance.x <= TargetMax.x && distance.z <= TargetMax.z) tr.position -= (distance * Time.deltaTime);
 
         //Vector3 pos;
         //pos.x = targetDist.x;
@@ -84,6 +83,6 @@ public class ZoomInOut : MonoBehaviour
         targetDist = Vector3.Normalize(targetDist);
         Quaternion.LookRotation(target[0].position + new Vector3(0, 1.5f, 0));
         transform.LookAt(target[0].position + new Vector3(0, 1.5f, 0));
-        tr.position -= (targetDist * -1.0f * zoom);
+        tr.position -= (targetDist * -1.0f * zoom ) * Time.deltaTime;
     }
 }
