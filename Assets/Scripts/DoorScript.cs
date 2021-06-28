@@ -7,8 +7,10 @@ public class DoorScript : MonoBehaviour
     public float doorOpenAngle = 90f; 
     public float doorCloseAngle = 0f; 
     public float smoot = 2f;
+    public bool canOpenDoor;
     void Start() 
     {
+        canOpenDoor = true;
     }
     public void ChangeDoorState() 
     {
@@ -23,8 +25,8 @@ public class DoorScript : MonoBehaviour
         } 
         else 
         {
-            Quaternion targetRotation2 = Quaternion.Euler(0, doorCloseAngle, 0);
-            transform.localRotation = Quaternion.Slerp(transform.localRotation, targetRotation2, smoot * Time.deltaTime);
+            //Quaternion targetRotation2 = Quaternion.Euler(0, doorCloseAngle, 0);
+            //transform.localRotation = Quaternion.Slerp(transform.localRotation, targetRotation2, smoot * Time.deltaTime);
         }
     }
 }

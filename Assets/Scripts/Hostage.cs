@@ -44,9 +44,9 @@ public class Hostage : LivingEntity
         skin[1] = transform.FindChild("Character_Woman_01").gameObject;
         skin[0] = transform.FindChild("Character_Cowgirl_01").gameObject;
         skin[2] = transform.FindChild("Character_WorkingGirl_01").gameObject;
-       //dissolve[0] = transform.FindChild("Character_Woman_01").gameObject.GetComponent<AutoDissolve>();
-       //dissolve[1] = transform.FindChild("Character_Cowgirl_01").gameObject.GetComponent<AutoDissolve>();
-       //dissolve[2] = transform.FindChild("Character_WorkingGirl_01").gameObject.GetComponent<AutoDissolve>();
+        //dissolve[0] = transform.FindChild("Character_Woman_01").gameObject.GetComponent<AutoDissolve>();
+        //dissolve[1] = transform.FindChild("Character_Cowgirl_01").gameObject.GetComponent<AutoDissolve>();
+        //dissolve[2] = transform.FindChild("Character_WorkingGirl_01").gameObject.GetComponent<AutoDissolve>();
 
         StartCoroutine(Return());
 
@@ -127,15 +127,15 @@ public class Hostage : LivingEntity
     }
 
     public void Attack()
-    {  
+    {
     }
     IEnumerator Return()
     {
-       
+
         yield return new WaitForSeconds(10f);
-       //dissolve[0].isDissolve = true;
-       //dissolve[1].isDissolve = true;
-       //dissolve[2].isDissolve = true;
+        //dissolve[0].isDissolve = true;
+        //dissolve[1].isDissolve = true;
+        //dissolve[2].isDissolve = true;
         myTag.Remove(myTag.Length - 7, 7);
         string test = myTag;
         objPool.ReturnToPool(myTag, this.gameObject);

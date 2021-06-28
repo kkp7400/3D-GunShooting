@@ -16,8 +16,9 @@ public class Enemy : LivingEntity
     private AudioSource enemyAudioPlayer; // 오디오 소스 컴포넌트
     private Renderer enemyRenderer; // 렌더러 컴포넌트    
     public GameObject player;
-    PlayerHp playerHp;
     public string myTag;
+
+    PlayerHp playerHp;
     public bool isDead = false;
     public float damage = 20f; // 공격력
     public float timeBetAttack = 0.5f; // 공격 간격
@@ -45,6 +46,9 @@ public class Enemy : LivingEntity
         skin[4] = transform.FindChild("Character_Gunman_01").gameObject;
         skin[0] = transform.FindChild("Character_Sheriff_01").gameObject;
 
+       
+
+
     }
 
 
@@ -55,9 +59,9 @@ public class Enemy : LivingEntity
 
     private void Start()
     {
+        playerHp = FindObjectOfType<PlayerHp>();
         int skimNum  = Random.Range(0, 5);
         skin[skimNum].SetActive(true);
-        playerHp = FindObjectOfType<PlayerHp>();
         // 게임 오브젝트 활성화와 동시에 AI의 추적 루틴 시작
         // StartCoroutine(UpdatePath());        
         myTag = this.gameObject.name;
@@ -119,9 +123,9 @@ public class Enemy : LivingEntity
 
     public void Attack()
     {
+        if(GameManager.instance.nowStage != 4)
         playerHp.hp--;
         Debug.Log("쏨");
-        
     }
     IEnumerator Return()
 	{

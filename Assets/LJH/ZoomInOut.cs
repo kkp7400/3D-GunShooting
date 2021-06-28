@@ -39,7 +39,7 @@ public class ZoomInOut : MonoBehaviour
             {
                 CameraZoomOut();
                 num += 1;
-                
+
                 if (num == 10 || num == 20 || num == 30 || num == 40)
                 {
                     isFight = false;
@@ -49,7 +49,7 @@ public class ZoomInOut : MonoBehaviour
             }
             else if (es.enemyList[0].GetComponent<Enemy>().isDead == false) CameraZoomIn();
         }
-        else if(!isFight)
+        else if (!isFight)
         {
             tr.position = headPosition.position - posit;
             tr.rotation = /*headPosition.rotation + */Quaternion.LookRotation(rot);
@@ -58,7 +58,7 @@ public class ZoomInOut : MonoBehaviour
                 isFight = true;
                 playerDestination.isMove = false;
             }
-        }    
+        }
     }
     void CameraZoomIn()
     {
@@ -68,7 +68,7 @@ public class ZoomInOut : MonoBehaviour
         TargetMax = Vector3.Normalize(TargetMax);
         Quaternion.LookRotation(target[0].position + new Vector3(0, 1.5f, 0));
         transform.LookAt(target[0].position + new Vector3(0, 1.5f, 0));
-        Vector3 distance = (targetDist * 1f * zoom ) * Time.deltaTime;
+        Vector3 distance = (targetDist * 1f * zoom) * Time.deltaTime;
 
         if (distance.x <= TargetMax.x && distance.z <= TargetMax.z) tr.position -= (distance * Time.deltaTime);
 
@@ -83,6 +83,6 @@ public class ZoomInOut : MonoBehaviour
         targetDist = Vector3.Normalize(targetDist);
         Quaternion.LookRotation(target[0].position + new Vector3(0, 1.5f, 0));
         transform.LookAt(target[0].position + new Vector3(0, 1.5f, 0));
-        tr.position -= (targetDist * -1.0f * zoom ) * Time.deltaTime;
+        tr.position -= (targetDist * -1.0f * zoom) * Time.deltaTime;
     }
 }

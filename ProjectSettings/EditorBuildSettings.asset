@@ -7,11 +7,11 @@ EditorBuildSettings:
   m_Scenes:
   - enabled: 1
     path: Assets/PolygonWestern/Demo/Intro.unity
-    guid: 958041e97714a5043b5fcd07f4cc2952
+    guid: e6ed11cf01dfa8245909ee8370f85cf9
   - enabled: 1
     path: Assets/PolygonWestern/Demo/Demo.unity
     guid: b02577a54950ef949a2fcd9d37a1d40c
   - enabled: 1
     path: Assets/PolygonWestern/Demo/Ending.unity
-    guid: 2f92396606d18974986cbc77cc2b2e36
+    guid: b38728e0f3800f747add5785f0bc2b7b
   m_configObjects: {}

@@ -57,7 +57,7 @@ public class CowGun : MonoBehaviour
 		if (state == State.Ready && Time.time >= lastFireTime + timeBetFire)
 		{
 			lastFireTime = Time.time;
-			Shot();
+				Shot();
 		}
 	}
 

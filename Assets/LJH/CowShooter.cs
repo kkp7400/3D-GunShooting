@@ -34,15 +34,19 @@ public class CowShooter : MonoBehaviour
 	private void Update()
 	{
 		// 입력을 감지하고 총 발사하거나 재장전
-		if (playerInput.fire)
+		if (GameManager.instance.nowStage != 4)
 		{
-			gun.Fire();
-		}
-		else if (playerInput.Reload)
-		{
-			if (gun.Reload())
+			if (playerInput.fire)
 			{
-				playerAnimator.SetTrigger("Reload");
+
+				gun.Fire();
+			}
+			else if (playerInput.Reload)
+			{
+				if (gun.Reload())
+				{
+					playerAnimator.SetTrigger("Reload");
+				}
 			}
 		}
 		//UpdateUI();

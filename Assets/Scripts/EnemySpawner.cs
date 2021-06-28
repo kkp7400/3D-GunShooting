@@ -35,7 +35,7 @@ public class EnemySpawner : MonoBehaviour
     float levelTime;
     public List<GameObject> enemyList = new List<GameObject>();
     public ObjectPool objPool;
-    private bool DeadEye;
+    public bool DeadEye;
     public GameObject player;
     public HostageSpawner hostageSpawner;
     // Start is called before the first frame update
@@ -53,7 +53,7 @@ public class EnemySpawner : MonoBehaviour
     void Update()
     {
         newStageArry = GameManager.instance.nowStage;
-        if (newStageArry != 3)
+        if (newStageArry < 3)
         {
             if (nowWave > lastWave)
             {
@@ -81,17 +81,14 @@ public class EnemySpawner : MonoBehaviour
 
             NextStage();
         }
-        else if(newStageArry == 3)
+        else if (newStageArry >= 3 && DeadEye == true)
         {
-            if (DeadEye == true)
-            {
-                for (int j = 0; j < stage[newStageArry].wave.Length; j++)
+                for (int j = 0; j < 10; j++)
                 {
-                    enemyList.Add(objPool.SpawnFromPool(stage[newStageArry].wave[j].enemyType, new Vector3(stage[newStageArry].wave[j].enemyPos.position.x, stage[newStageArry].wave[j].enemyPos.position.y, stage[newStageArry].wave[j].enemyPos.position.z),
+                    enemyList.Add(objPool.SpawnFromPool(stage[3].wave[j].enemyType, new Vector3(stage[3].wave[j].enemyPos.position.x, stage[3].wave[j].enemyPos.position.y, stage[3].wave[j].enemyPos.position.z),
                        Quaternion.identity));
                 }
-                DeadEye = false;
-            }
+            DeadEye = false;
         }
     }
 
@@ -106,9 +103,13 @@ public class EnemySpawner : MonoBehaviour
             nowWave++;
         enemyList.Clear();
     }
-    void PhaseFloor()
+    
+    public void HighNoon()
     {
-
+        for (int i = 0; i < enemyList.Count; i++)
+        {
+            enemyList[i].GetComponent<Enemy>().Die();
+        }
 
     }
 }

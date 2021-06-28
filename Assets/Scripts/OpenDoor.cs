@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class OpenDoor : MonoBehaviour
 {
+    public GameObject ball1;
     public DoorScript door;
     public GameObject obj;
     // Start is called before the first frame update
@@ -28,5 +29,11 @@ public class OpenDoor : MonoBehaviour
         if(other.tag == "Enemy"|| other.tag == "Player")
         door.ChangeDoorState();
         //this.GetComponent<Collider>().enabled = false;
+    }
+    private void OnTriggerExit(Collider other)
+    {
+
+        if (other.tag == "Player")
+            ball1.GetComponent<Rigidbody>().AddForce(new Vector3(-400f, 200));
     }
 }

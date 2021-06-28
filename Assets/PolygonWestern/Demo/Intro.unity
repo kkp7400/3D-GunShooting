@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -14236,6 +14236,7 @@ MonoBehaviour:
   doorOpenAngle: 90
   doorCloseAngle: 0
   smoot: 2
+  canOpenDoor: 0
 --- !u!1001 &307894091
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15710,6 +15711,7 @@ MonoBehaviour:
   doorOpenAngle: 110
   doorCloseAngle: 0
   smoot: 3
+  canOpenDoor: 0
 --- !u!4 &336341331 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4106211661859086, guid: 123ecdc0880ca01448a9da2643565fdb,
@@ -21761,7 +21763,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 508801944}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 71b1597a671e25c429d7356f78c54ac7, type: 3}
+  m_Script: {fileID: 11500000, guid: 86c306778571f8e4f8140ca1e74942ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   image: {fileID: 170351054}
@@ -29681,7 +29683,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 682831345}
-  m_LocalRotation: {x: -0.0072928905, y: -0.07239359, z: -0.0005293616, w: 0.9973494}
+  m_LocalRotation: {x: -0.0072928467, y: -0.07239359, z: -0.0005293584, w: 0.9973494}
   m_LocalPosition: {x: 9.874079, y: 10, z: -5.118044}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -33637,6 +33639,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1dc9426a934f434a836f58d4f5312b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ball1: {fileID: 0}
   door: {fileID: 0}
   obj: {fileID: 0}
 --- !u!65 &742632447
@@ -43909,6 +43912,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1dc9426a934f434a836f58d4f5312b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ball1: {fileID: 0}
   door: {fileID: 0}
   obj: {fileID: 0}
 --- !u!65 &1003937184
@@ -45303,6 +45307,7 @@ MonoBehaviour:
   doorOpenAngle: 90
   doorCloseAngle: 0
   smoot: 2
+  canOpenDoor: 0
 --- !u!4 &1029929902 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4262727619187764, guid: 1ccfb12c2d150c44ca82e08ef622cd75,
@@ -52603,6 +52608,7 @@ MonoBehaviour:
   doorOpenAngle: -110
   doorCloseAngle: 0
   smoot: 3
+  canOpenDoor: 0
 --- !u!4 &1190164021 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4246435735550012, guid: 1b10a92646ea552438a4ff62bd6b8706,
@@ -53678,6 +53684,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1dc9426a934f434a836f58d4f5312b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ball1: {fileID: 0}
   door: {fileID: 0}
   obj: {fileID: 0}
 --- !u!65 &1213609816
@@ -61415,6 +61422,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1dc9426a934f434a836f58d4f5312b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ball1: {fileID: 0}
   door: {fileID: 0}
   obj: {fileID: 0}
 --- !u!65 &1368170753
@@ -69847,7 +69855,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1557472851}
-  m_LocalRotation: {x: -0.0072928905, y: -0.07239359, z: -0.0005293616, w: 0.9973494}
+  m_LocalRotation: {x: -0.0072928467, y: -0.07239359, z: -0.0005293584, w: 0.9973494}
   m_LocalPosition: {x: 9.874079, y: 10, z: -5.118044}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -83825,6 +83833,7 @@ MonoBehaviour:
   doorOpenAngle: 130
   doorCloseAngle: 0
   smoot: 2
+  canOpenDoor: 0
 --- !u!4 &1907042097 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4418990912348948, guid: 9e1ddde96005d514a98b2d681f4e9958,
@@ -84006,6 +84015,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1dc9426a934f434a836f58d4f5312b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ball1: {fileID: 0}
   door: {fileID: 0}
   obj: {fileID: 0}
 --- !u!65 &1910409952
