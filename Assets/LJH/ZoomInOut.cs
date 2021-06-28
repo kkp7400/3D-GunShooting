@@ -8,19 +8,23 @@ public class ZoomInOut : MonoBehaviour
     private List<Transform> target = new List<Transform>();
     public Transform headPosition;
     EnemySpawner es;
+    Playertrig trig;
     public GameObject crossHair;
+    public GameObject[] point;
     public Vector3 posit;
     public Vector3 rot;
     public float zoom;
     private Transform tr;
     private int num;
-    private bool isFight = true;
+    public bool isFight = true;
+    public PlayerDestination playerDestination;
 
     void Start()
     {
         num = 0;
         tr = GetComponent<Transform>();
         es = FindObjectOfType<EnemySpawner>();
+        trig = FindObjectOfType<Playertrig>();
         //num = 0;
     }
 
@@ -36,7 +40,12 @@ public class ZoomInOut : MonoBehaviour
             {
                 CameraZoomOut();
                 num += 1;
-                if (num == 10 || num == 20 || num == 30) isFight = false;
+                if (num == 10 || num == 20 || num == 30 || num >= 40 && trig.start == false)
+                {
+                    isFight = false;
+                    playerDestination.destNum += 1;
+                    playerDestination.isMove = true;
+                }
             }
             else if (es.enemyList[0].GetComponent<Enemy>().isDead == false) CameraZoomIn();
         }
@@ -44,7 +53,13 @@ public class ZoomInOut : MonoBehaviour
         {
             tr.position = headPosition.position - posit;
             tr.rotation = /*headPosition.rotation + */Quaternion.LookRotation(rot);
+            if (trig.start == true)
+            {
+                isFight = true;
+                playerDestination.isMove = false;
+            }
         }
+        
     }
     void CameraZoomIn()
     {

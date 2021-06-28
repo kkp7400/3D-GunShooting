@@ -25,7 +25,8 @@ public class OpenDoor : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if(other.tag == "Enemy")
+        if(other.tag == "Enemy"|| other.tag == "Player")
         door.ChangeDoorState();
+        //this.GetComponent<Collider>().enabled = false;
     }
 }
