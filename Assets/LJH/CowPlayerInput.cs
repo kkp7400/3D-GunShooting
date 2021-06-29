@@ -29,4 +29,5 @@ public class CowPlayerInput : MonoBehaviour
         // reload에 관한 입력 감지
         Reload = Input.GetButtonDown(reloadButtonName);
     }
+    
 }

@@ -62,4 +62,19 @@ public class BulletUI : MonoBehaviour
         }
         ammoUI.sprite = spriteRenderer.sprite;
     }
+    public void Reload()
+    {
+        
+            anim.SetTrigger("Reload");
+
+            if (bulletCount <= 0)
+            {
+                bulletZero = true;
+                anim.SetBool("AmmoZero", true);
+            }
+            reload.SetActive(false);
+            bulletCount = 6;
+            anim.SetInteger("AmmoCount", bulletCount);
+        ammoUI.sprite = spriteRenderer.sprite;
+    }
 }
