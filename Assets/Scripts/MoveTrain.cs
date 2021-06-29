@@ -29,6 +29,7 @@ public class MoveTrain : MonoBehaviour
         fadeOut = true;
         textScroll = false;
         fadeText = true;
+        score.GetComponent<Text>().text = "Rec : "  + GameManager.instance.timer.text;
     }
 
     // Update is called once per frame
@@ -58,11 +59,11 @@ public class MoveTrain : MonoBehaviour
         }
         if (textScroll)
         {
-            if (r.transform.position.y <=  500f*1.7f)
+            if (r.transform.position.y <= 500f * 1.7f)
             {
                 r.transform.position += new Vector3(0f, 100 * Time.deltaTime);
             }
-            else if(r.transform.position.y > 500f * 1.7f)
+            else if (r.transform.position.y > 500f * 1.7f)
             {
                 if (fadeText)
                 {
@@ -70,9 +71,8 @@ public class MoveTrain : MonoBehaviour
                     fadeText = false;
                 }
             }
-
         }
-                
+       
     }
     public IEnumerator FadeInCoroutine()
     {
@@ -108,7 +108,6 @@ public class MoveTrain : MonoBehaviour
             fadeCount += 0.01f;
             yield return new WaitForSeconds(0.01f);
             t.GetComponent<Text>().color = new Color(255, 255, 255, fadeCount);
-            score.
             score.GetComponent<Text>().color = new Color(255, 255, 255, fadeCount);
         }
         yield return new WaitForSeconds(3f);

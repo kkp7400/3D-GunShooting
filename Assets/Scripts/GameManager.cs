@@ -42,6 +42,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        DontDestroyOnLoad(timer);
         MoveSpeed = 4f;
         MovedValue = 0f;
         nowStage = 0;

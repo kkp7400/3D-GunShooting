@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -5098,7 +5098,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'End
+  m_Text: 'Clear
 
 
 
@@ -86877,7 +86877,6 @@ GameObject:
   - component: {fileID: 1959737219}
   - component: {fileID: 1959737222}
   - component: {fileID: 1959737221}
-  - component: {fileID: 1959737220}
   m_Layer: 5
   m_Name: Score
   m_TagString: Untagged
@@ -86901,22 +86900,9 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -200}
+  m_AnchoredPosition: {x: 0, y: -150}
   m_SizeDelta: {x: 5000, y: 500}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1959737220
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1959737218}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bc55d6d498a7eee45ad464c1ce427935, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  myScore: {fileID: 1959737221}
 --- !u!114 &1959737221
 MonoBehaviour:
   m_ObjectHideFlags: 0

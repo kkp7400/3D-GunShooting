@@ -7,7 +7,7 @@ public class ZoomInOut : MonoBehaviour
     [SerializeField]
     private List<Transform> target = new List<Transform>();
     public Transform headPosition;
-    EnemySpawner es;
+    public EnemySpawner es;
     Playertrig trig;
     public GameObject crossHair;
     public GameObject[] point;
@@ -35,19 +35,22 @@ public class ZoomInOut : MonoBehaviour
         }
         if (isFight)
         {
-            if (es.enemyList[0].GetComponent<Enemy>().isDead == true)
-            {
-                CameraZoomOut();
-                num += 1;
-
-                if (num == 10 || num == 20 || num == 30 || num == 40)
+			if (es.enemyList[0] != null)
+			{
+                if (es.enemyList[0].GetComponent<Enemy>().isDead == true)
                 {
-                    isFight = false;
-                    playerDestination.destNum += 1;
-                    playerDestination.isMove = true;
+                    CameraZoomOut();
+                    num += 1;
+
+                    if (num == 10 || num == 20 || num == 30 || num == 40)
+                    {
+                        isFight = false;
+                        playerDestination.destNum += 1;
+                        playerDestination.isMove = true;
+                    }
                 }
-            }
-            else if (es.enemyList[0].GetComponent<Enemy>().isDead == false) CameraZoomIn();
+                else if (es.enemyList[0].GetComponent<Enemy>().isDead == false) CameraZoomIn();
+            }    
         }
         else if (!isFight)
         {
