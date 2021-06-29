@@ -25,9 +25,12 @@ public class HighAim : MonoBehaviour
     public GameObject audioMain;
     public GameObject audioShot;
     public GameObject audioHigh;
+    public GameObject sun;
+    private bool sunFall;
     void Start()
     {
-        startCo = true;
+        sunFall = false; ;
+           startCo = true;
         for (int i = 0; i < highAim.Length; i++)
         {        
             highAim[i].transform.position = cam.WorldToScreenPoint(enemyPos[i].transform.position + offset);
@@ -46,7 +49,7 @@ public class HighAim : MonoBehaviour
             highAim[i].transform.position = cam.WorldToScreenPoint(enemyPos[i].transform.position+ offset);
         }
         if (GameManager.instance.nowStage == 4)
-        {
+        {            
             if (startCo == true)
             {
                 audioMain.GetComponent<AudioSource>().Stop();
@@ -73,11 +76,16 @@ public class HighAim : MonoBehaviour
                 }
             }
         }
+        if(sunFall==true)
+        {
+            sun.transform.position -= new Vector3(0f, 10f * Time.deltaTime, 0f);
+        }
         
     }
 
     public IEnumerator Aimming()
     {
+        sunFall = true;
         for (int i = 0; i < highAim.Length; i++)
         {
             highAim[i].transform.position = cam.WorldToScreenPoint(enemyPos[i].transform.position+offset);
@@ -116,6 +124,7 @@ public class HighAim : MonoBehaviour
         highAim[9].SetActive(true);
         aimStart[9] = true;
         yield return new WaitForSeconds(0.5f);
+        //sunFall = false;
         StartCoroutine(Shot());
     }
     public IEnumerator Shot()
