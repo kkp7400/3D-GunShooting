@@ -6,12 +6,12 @@ public class StageTrigger : MonoBehaviour
 {
     public GameObject ball1;
     public EnemySpawner enemySpawner;
-    private AudioSource highNoonPlayer; // 醚 家府 犁积扁
-    public AudioClip highNoon; // 惯荤 家府
+    //private AudioSource highNoonPlayer; // 醚 家府 犁积扁
+    //public AudioClip highNoon; // 惯荤 家府
     // Start is called before the first frame update
     void Start()
     {
-        highNoonPlayer = FindObjectOfType<AudioSource>();
+        //highNoonPlayer = FindObjectOfType<AudioSource>();
     }
 
     // Update is called once per frame
@@ -27,7 +27,7 @@ public class StageTrigger : MonoBehaviour
             enemySpawner.lastWave = -1;
             this.transform.position = new Vector3(100, 100, 100);
             ball1.GetComponent<Rigidbody>().AddForce(new Vector3(-400f, -200));
-            highNoonPlayer.PlayOneShot(highNoon);
+          // highNoonPlayer.PlayOneShot(highNoon);
 
         }
     }

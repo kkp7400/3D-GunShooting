@@ -22,7 +22,9 @@ public class HighAim : MonoBehaviour
     private ChromaticAberration chromatic;
     public bool[] aimStart = new bool[10];
     private bool startCo;
-
+    public GameObject audioMain;
+    public GameObject audioShot;
+    public GameObject audioHigh;
     void Start()
     {
         startCo = true;
@@ -47,6 +49,8 @@ public class HighAim : MonoBehaviour
         {
             if (startCo == true)
             {
+                audioMain.GetComponent<AudioSource>().Stop();
+                audioHigh.GetComponent<AudioSource>().Play();                
                 StartCoroutine(Aimming());
                 startCo = false;
             }
@@ -115,43 +119,53 @@ public class HighAim : MonoBehaviour
         StartCoroutine(Shot());
     }
     public IEnumerator Shot()
-    {        
+    {
+        audioShot.GetComponent<AudioSource>().Play();
         shot.GetComponent<ParticleSystem>().Play();
         highAim[0].SetActive(false);
         aimStart[0] = false;
         yield return new WaitForSeconds(0.1f);
+        audioShot.GetComponent<AudioSource>().Play();
         shot.GetComponent<ParticleSystem>().Play();
         highAim[1].SetActive(false);
         aimStart[1] = false;
         yield return new WaitForSeconds(0.1f);
+        audioShot.GetComponent<AudioSource>().Play();
         shot.GetComponent<ParticleSystem>().Play();
         highAim[2].SetActive(false);
         aimStart[2] = false;
         yield return new WaitForSeconds(0.1f);
+        audioShot.GetComponent<AudioSource>().Play();
         shot.GetComponent<ParticleSystem>().Play();
         highAim[3].SetActive(false);
         aimStart[3] = false;
         yield return new WaitForSeconds(0.1f);
+        audioShot.GetComponent<AudioSource>().Play();
         shot.GetComponent<ParticleSystem>().Play();
         highAim[4].SetActive(false);
         aimStart[4] = false;
         yield return new WaitForSeconds(0.1f);
+        audioShot.GetComponent<AudioSource>().Play();
         shot.GetComponent<ParticleSystem>().Play();
         highAim[5].SetActive(false);
         aimStart[5] = false;
         yield return new WaitForSeconds(0.1f);
+        audioShot.GetComponent<AudioSource>().Play();
         shot.GetComponent<ParticleSystem>().Play();
         highAim[6].SetActive(false);
         aimStart[6] = false;
         yield return new WaitForSeconds(0.1f);
+        audioShot.GetComponent<AudioSource>().Play();
         shot.GetComponent<ParticleSystem>().Play();
         highAim[7].SetActive(false);
         aimStart[7] = false;
         yield return new WaitForSeconds(0.1f);
+        audioShot.GetComponent<AudioSource>().Play();
         shot.GetComponent<ParticleSystem>().Play();
         highAim[8].SetActive(false);
         aimStart[8] = false;
         yield return new WaitForSeconds(0.1f);
+        audioShot.GetComponent<AudioSource>().Play();
         shot.GetComponent<ParticleSystem>().Play();
         highAim[9].SetActive(false);
         aimStart[9] = false;

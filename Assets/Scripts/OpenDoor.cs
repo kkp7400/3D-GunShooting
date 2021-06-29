@@ -26,9 +26,12 @@ public class OpenDoor : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if(other.tag == "Enemy"|| other.tag == "Player")
-        door.ChangeDoorState();
-        //this.GetComponent<Collider>().enabled = false;
+        if (other.tag == "Enemy" || other.tag == "Player")
+        {
+            door.ChangeDoorState();
+            //this.GetComponent<Collider>().enabled = false;
+            this.transform.position = new Vector3(200, 200, 200);
+        }
     }
     private void OnTriggerExit(Collider other)
     {

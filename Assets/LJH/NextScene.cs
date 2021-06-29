@@ -20,6 +20,7 @@ public class NextScene : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             StartCoroutine(FadeCoroutine());
+            this.GetComponent<AudioSource>().Play();
         }
     }
     public IEnumerator FadeCoroutine()
