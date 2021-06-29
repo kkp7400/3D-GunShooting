@@ -17,7 +17,7 @@ public class Enemy : LivingEntity
     private Renderer enemyRenderer; // 렌더러 컴포넌트    
     public GameObject player;
     public string myTag;
-
+    public GameObject particle;
     PlayerHp playerHp;
     public bool isDead = false;
     public float damage = 20f; // 공격력
@@ -65,6 +65,7 @@ public class Enemy : LivingEntity
         // 게임 오브젝트 활성화와 동시에 AI의 추적 루틴 시작
         // StartCoroutine(UpdatePath());        
         myTag = this.gameObject.name;
+        particle = transform.FindChild("Gun Pivot").FindChild("SM_Wep_Rifle_01").FindChild("MuzzleFlashEffect").gameObject;
     }
 
     private void Update()
@@ -123,9 +124,11 @@ public class Enemy : LivingEntity
 
     public void Attack()
     {
-        if(GameManager.instance.nowStage != 4)
-        playerHp.hp--;
-        Debug.Log("쏨");
+        if (GameManager.instance.nowStage != 4)
+        {
+            playerHp.hp--;
+            particle.GetComponent<ParticleSystem>().Play();
+        }
     }
     IEnumerator Return()
 	{

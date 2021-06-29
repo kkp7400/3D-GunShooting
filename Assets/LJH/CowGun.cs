@@ -107,7 +107,7 @@ public class CowGun : MonoBehaviour
 		bulletLineRenderer.enabled = true;
 
 		// 0.03초 동안 잠시 처리를 대기
-		yield return new WaitForSeconds(0.03f);
+		yield return new WaitForSeconds(0.02f);
 
 		// 라인 렌더러를 비활성화하여 총알 궤적을 지운다
 		bulletLineRenderer.enabled = false;
