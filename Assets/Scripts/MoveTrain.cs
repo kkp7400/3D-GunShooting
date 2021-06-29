@@ -20,7 +20,8 @@ public class MoveTrain : MonoBehaviour
     public GameObject r;
     public GameObject t;
     public GameObject score;
-
+    public GameObject screenSize;
+    public float size;
     // Start is called before the first frame update
     void Start()
     {
@@ -30,11 +31,13 @@ public class MoveTrain : MonoBehaviour
         textScroll = false;
         fadeText = true;
         score.GetComponent<Text>().text = "Rec : "  + GameManager.instance.timer.text;
+        size = r.GetComponent<RectTransform>().anchoredPosition.y;//screenSize.GetComponent<RectTransform>().rect.height;
     }
 
     // Update is called once per frame
     void Update()
     {
+        size = r.GetComponent<RectTransform>().anchoredPosition.y;
         if (fadeIn)
         {
             StartCoroutine(FadeInCoroutine());
@@ -59,11 +62,11 @@ public class MoveTrain : MonoBehaviour
         }
         if (textScroll)
         {
-            if (r.transform.position.y <= 500f * 1.7f)
+            if (size <= 400f)
             {
                 r.transform.position += new Vector3(0f, 100 * Time.deltaTime);
             }
-            else if (r.transform.position.y > 500f * 1.7f)
+            else if (size > 400f)
             {
                 if (fadeText)
                 {
