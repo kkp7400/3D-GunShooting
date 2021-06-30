@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 using UnityEngine.AI; // AI, 내비게이션 시스템 관련 코드를 가져오기
+using UnityEngine.UI;
 
 // 적 AI를 구현한다
 public class Enemy : LivingEntity
@@ -27,6 +28,8 @@ public class Enemy : LivingEntity
     public ParticleSystem HitFx;
     public GameObject fx;
     public GameObject[] skin = new GameObject[5];
+
+
     private void Awake()
     {
         // 초기화
@@ -128,8 +131,10 @@ public class Enemy : LivingEntity
         {
             playerHp.hp--;
             particle.GetComponent<ParticleSystem>().Play();
+            GameManager.instance.isHit = true;
         }
     }
+    
     IEnumerator Return()
 	{
         dissolve.isDissolve = true;

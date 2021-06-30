@@ -13,6 +13,8 @@ public class PlayerShooter : MonoBehaviour
 
     private void Start()
     {
+        gun = this.transform.FindChild("Gun Pivot").transform.FindChild("SM_Wep_Rifle_01").gameObject.GetComponent<Gun>();
+            
         // 사용할 컴포넌트들을 가져오기
         playerAnimator = GetComponent<Animator>();
     }

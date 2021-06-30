@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -26,8 +27,12 @@ public class GameManager : MonoBehaviour
     public int second = 0;
     public int tic = 0;
 
+    public bool isHit;
+
+    public Image image;
     private void Awake()
     {
+        isHit = false;
         gameEnd = false;
         if (instance == null)
         {
@@ -70,6 +75,11 @@ public class GameManager : MonoBehaviour
             totalTime += Time.deltaTime;
         }
         timer.GetComponent<Text>().text = "Time : " + TimerCalc();
+        if(isHit)
+        {
+            StartCoroutine(FadeCoroutine());
+            isHit = false;
+        }
     }
 
     private string TimerCalc()
@@ -81,5 +91,27 @@ public class GameManager : MonoBehaviour
         minute = (int)totalTime / 60;
 
         return minute + " : " + second + " : " + tic;
+    }
+    public IEnumerator FadeCoroutine()
+    {
+        float fadeCount = 0;
+        while (fadeCount < 0.35f)
+        {
+            fadeCount += 0.05f;
+            yield return new WaitForSeconds(0.002f);
+            image.color = new Color(255, 0, 0, fadeCount);
+        }
+
+        StartCoroutine(FadeInCoroutine());
+    }
+    public IEnumerator FadeInCoroutine()
+    {
+        float fadeCount = 0.35f;
+        while (fadeCount > 0.0f)
+        {
+            fadeCount -= 0.05f;
+            yield return new WaitForSeconds(0.001f);
+            image.color = new Color(255, 0, 0, fadeCount);
+        }
     }
 }
